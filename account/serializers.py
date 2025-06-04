@@ -35,6 +35,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "phone",
+            "profile_image",
             "date_joined",
             "last_login",
         ]
