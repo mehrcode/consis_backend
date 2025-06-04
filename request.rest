@@ -1,0 +1,28 @@
+### register
+POST http://127.0.0.1:8000/account/register/
+Content-Type: application/json
+
+{
+    "email": "farhang@example.com",
+    "password1": "farhang1234",
+    "password2": "farhang1234"
+}
+
+### login
+POST http://localhost:8000/api/account/
+Content-Type: application/json
+
+{
+    "email": "farhang@example.com",
+    "password": "farhang1234"
+}
+
+
+### logout
+POST http://localhost:8000/api/account/logout/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5MDE2NzU0LCJpYXQiOjE3NDkwMTY0NTQsImp0aSI6IjAxOTk4YzRlMTI1MTQ0NzlhYzQyYTk3OTM1YjQ2ZGE3IiwidXNlcl9pZCI6IjE1ZTkwMWYyLTQ3YzYtNGM3MS1hNmMyLTE5OWY4YzQ0OTkyZSJ9.trl1mwz5m4ih7WHWvQRcLrAGiqSJHURkR_4rU9Gp3tg
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0OTEwMjg1NCwiaWF0IjoxNzQ5MDE2NDU0LCJqdGkiOiI3ODQ0MThhMjVkNGU0YWQ5ODcxODYwZGVjZTkwZmZhMyIsInVzZXJfaWQiOiIxNWU5MDFmMi00N2M2LTRjNzEtYTZjMi0xOTlmOGM0NDk5MmUifQ.ak85dpj0TZrKGswaCM8JvaguUpaFFtziAB5hlY6gOi8"
+}
