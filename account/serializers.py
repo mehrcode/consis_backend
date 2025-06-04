@@ -23,3 +23,19 @@ class UserSerializer(serializers.ModelSerializer):
             )  # Hash the password on update
         instance.save()
         return instance
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = User
+        fields = [
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "phone",
+            "date_joined",
+            "last_login",
+        ]
+        read_only_fields = ["id", "date_joined", "last_login"]

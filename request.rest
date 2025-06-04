@@ -13,8 +13,8 @@ POST http://localhost:8000/api/account/
 Content-Type: application/json
 
 {
-    "email": "farhang@example.com",
-    "password": "farhang1234"
+    "email": "mehrnoosh@example.com",
+    "password": "mehrnoosh1234"
 }
 
 
@@ -26,3 +26,24 @@ Content-Type: application/json
 {
     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0OTEwMjg1NCwiaWF0IjoxNzQ5MDE2NDU0LCJqdGkiOiI3ODQ0MThhMjVkNGU0YWQ5ODcxODYwZGVjZTkwZmZhMyIsInVzZXJfaWQiOiIxNWU5MDFmMi00N2M2LTRjNzEtYTZjMi0xOTlmOGM0NDk5MmUifQ.ak85dpj0TZrKGswaCM8JvaguUpaFFtziAB5hlY6gOi8"
 }
+
+
+### user_profile
+GET http://localhost:8000/api/account/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5MDIxODQzLCJpYXQiOjE3NDkwMjE1NDMsImp0aSI6IjRiNzRhN2VhNmJjZjQ1OWZhZjk0NTdlOWJjYWZiY2I3IiwidXNlcl9pZCI6IjcxZDg4NWI2LTdmMmYtNDlhYi1hNjQyLTFhZDE5NjUxNDAzZSJ9.Z0DGBD6BEfsGdsL510JBaV9EFR1dwRSXorb_wNFrCGU
+Content-Type: application/json
+
+
+### edit_profile
+PUT http://localhost:8000/api/account/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5MDIyMzM5LCJpYXQiOjE3NDkwMjIwMzksImp0aSI6ImNlOTE4ZmEwMjE3MjRjNjk5MzgyNTZhOWU1NzI3NzI4IiwidXNlcl9pZCI6IjcxZDg4NWI2LTdmMmYtNDlhYi1hNjQyLTFhZDE5NjUxNDAzZSJ9.waHxZ04ZNkJdRinYahLG7rXi0Dd_weGzP3bdNBY6CEk
+Content-Type: application/json
+
+{
+    "username": "Merhnoosh_dev",
+    "email": "mehrnoosh@example.com",
+    "first_name": "Mehrnoosh",
+    "last_name": "Shoolestani",
+    "phone": "09207443796"
+}
+
