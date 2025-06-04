@@ -54,3 +54,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 Content-Type: multipart/form-data
 
 (profile_image: memacode.jpg)
+
+
+### bio
+PATCH http://localhost:8000/api/account/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU3NjY2NjM5LCJpYXQiOjE3NDkwMjY2MzksImp0aSI6IjcwZTMwNTUzMDY3NDRlZWY4ZDMxOWQyMzAyYWZhZDQ1IiwidXNlcl9pZCI6IjcxZDg4NWI2LTdmMmYtNDlhYi1hNjQyLTFhZDE5NjUxNDAzZSJ9.WjXGLzay9VSZbt6pRJahm9RBF5lVWWKTFnItPE3jQ6c
+Content-Type: application/json
+
+{
+    "bio": "من عاشق یوگا و  هنر و کدنویسیم"
+}
+
+### read_bio
+GET http://localhost:8000/api/account/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU3NjY2NjM5LCJpYXQiOjE3NDkwMjY2MzksImp0aSI6IjcwZTMwNTUzMDY3NDRlZWY4ZDMxOWQyMzAyYWZhZDQ1IiwidXNlcl9pZCI6IjcxZDg4NWI2LTdmMmYtNDlhYi1hNjQyLTFhZDE5NjUxNDAzZSJ9.WjXGLzay9VSZbt6pRJahm9RBF5lVWWKTFnItPE3jQ6c
+Content-Type: application/json

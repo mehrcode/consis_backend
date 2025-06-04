@@ -47,6 +47,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(auto_now_add=True)
     phone = models.CharField(max_length=11, blank=True, null=True)
 
+    bio = models.TextField(blank=True, null=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
+    instagram_url = models.URLField(blank=True, null=True)
+    website_url = models.URLField(blank=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
+
+    interests = models.ManyToManyField("Tag", blank=True)
+
+
     user_permissions = models.ManyToManyField(
         Permission, related_name="account_user_permissions", blank=True
     )
@@ -59,3 +68,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     profile_image = models.ImageField(
         upload_to="profile_images/", blank=True, null=True
     )
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
