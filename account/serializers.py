@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from .models import User, Tag
+from .models import User
+from account.api.serializers import TagSerializer
+from .models import Tag
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -23,12 +25,6 @@ class UserSerializer(serializers.ModelSerializer):
             )  # Hash the password on update
         instance.save()
         return instance
-
-
-class TagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tag
-        fields = ["id", "name"]
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -61,9 +57,3 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "last_login",
         ]
         read_only_fields = ["id", "date_joined", "last_login"]
-
-
-class TagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tag
-        fields = ["id", "name"]

@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import generics, permissions, viewsets
+from rest_framework import generics, permissions
 from .serializers import UserProfileSerializer
 from .models import User, Tag
 
@@ -43,6 +43,3 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
         return self.request.user
 
 
-class TagViewSet(viewsets.ModelViewSet):
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
