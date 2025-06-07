@@ -51,3 +51,13 @@ class TrackLogViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save()
+
+
+class MyTrackViewSet(viewsets.ViewSet):
+    permission_classes= [IsAuthenticated]
+
+    def list(self, request):
+        user = request.user
+        tracks = Track.objects.filter(user=user).prefetch_related('logs')
+        serializer = TrackSerializer(tracks, many=True)
+        return Response(serializer.data)

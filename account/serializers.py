@@ -60,11 +60,28 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 class TrackSerializer(serializers.ModelSerializer):
+    last_log = serializers.SerializerMethodField()
+
     class Meta:
         model = Track
-        fields = ['id', 'title', 'description', 'created_at']
+        fields = [
+            "id",
+            "title",
+            "description",
+            "created_at",
+            "unit",
+            "goal",
+            "last_log",
+        ]
+
+    def get_last_log(self, obj):
+        last_log = obj.logs.order_by("-date").first()
+        if last_log:
+            return TrackLogSerializer(last_log).data
+        return None
+
 
 class TrackLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrackLog
-        fields = ['id', 'track', 'date', 'progress_note', 'minutes', 'score']
+        fields = ["date", "minutes", "score", "progress_note"]

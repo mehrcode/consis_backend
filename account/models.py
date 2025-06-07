@@ -77,11 +77,12 @@ class Tag(models.Model):
 
 
 class Track(models.Model):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="tracks"
-    )
-    title = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tracks")
+    name = models.CharField(max_length=255, default="New Track")
+    unit = models.CharField(max_length=50, blank=True, default="0") 
+    goal = models.PositiveIntegerField(
+        default=0
+    ) 
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -97,4 +98,4 @@ class TrackLog(models.Model):
 
     class Meta:
         unique_together = ("track", "date")
-        ordering = ['-date']
+        ordering = ["-date"]
