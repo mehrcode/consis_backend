@@ -78,3 +78,12 @@ Content-Type: application/json
 {
     "name": "coding art"
 }
+
+### make_new_track
+POST http://localhost/api/account/tracks/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU3NjY2NjM5LCJpYXQiOjE3NDkwMjY2MzksImp0aSI6IjcwZTMwNTUzMDY3NDRlZWY4ZDMxOWQyMzAyYWZhZDQ1IiwidXNlcl9pZCI6IjcxZDg4NWI2LTdmMmYtNDlhYi1hNjQyLTFhZDE5NjUxNDAzZSJ9.WjXGLzay9VSZbt6pRJahm9RBF5lVWWKTFnItPE3jQ6c
+Content-Type: application/json
+
+{
+    "track-name": "learning python"
+}

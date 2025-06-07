@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import User
 from account.api.serializers import TagSerializer
-from .models import Tag
+from .models import Tag, Track, TrackLog
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -57,3 +57,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "last_login",
         ]
         read_only_fields = ["id", "date_joined", "last_login"]
+
+
+class TrackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Track
+        fields = ['id', 'title', 'description', 'created_at']
+
+class TrackLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TrackLog
+        fields = ['id', 'track', 'date', 'progress_note', 'minutes', 'score']

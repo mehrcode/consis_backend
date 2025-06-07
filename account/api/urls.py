@@ -1,9 +1,14 @@
 from django.urls import path
+from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import LogoutView
 from account.views import UserProfileView
-from .views import TagViewSet
+from .views import TagViewSet, TrackViewSet, TrackLogViewSet
 
+
+router = DefaultRouter()
+router.register(r'tracks', TrackViewSet, basename='track')
+router.register(r'track-logs', TrackLogViewSet, basename='track-log')
 
 tag_list = TagViewSet.as_view({"get": "list", "post": "create"})
 

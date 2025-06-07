@@ -55,7 +55,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     interests = models.ManyToManyField("Tag", blank=True)
 
-
     user_permissions = models.ManyToManyField(
         Permission, related_name="account_user_permissions", blank=True
     )
@@ -75,3 +74,27 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Track(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="tracks"
+    )
+    title = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+
+class TrackLog(models.Model):
+    track = models.ForeignKey(Track, on_delete=models.CASCADE, related_name="logs")
+    date = models.DateField()
+    progress_note = models.TextField(blank=True)
+    minutes = models.PositiveIntegerField(default=0)
+    score = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        unique_together = ("track", "date")
+        ordering = ['-date']
