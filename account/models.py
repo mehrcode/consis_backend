@@ -90,7 +90,7 @@ class Track(models.Model):
 
 class TrackLog(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE, related_name="logs")
-    date = models.DateField()
+    date = models.DateField(null=True)
     progress_note = models.TextField(blank=True)
     minutes = models.PositiveIntegerField(default=0)
     score = models.PositiveIntegerField(default=0)

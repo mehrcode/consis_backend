@@ -19,3 +19,5 @@ urlpatterns = [
     path("profile/", UserProfileView.as_view(), name="user-profile"),
     path("tags/", tag_list, name="tag-list"),
 ]
+
+urlpatterns += router.urls
