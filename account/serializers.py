@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import User
 from account.api.serializers import TagSerializer
 from .models import Tag, Track, TrackLog
+from datetime import timedelta
+from django.utils import timezone
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -61,17 +63,18 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 class TrackSerializer(serializers.ModelSerializer):
     last_log = serializers.SerializerMethodField()
+    streak_days = serializers.SerializerMethodField()
 
     class Meta:
         model = Track
         fields = [
             "id",
-            "title",
-            "description",
+            "name",
             "created_at",
             "unit",
             "goal",
             "last_log",
+            "streak_days", 
         ]
 
     def get_last_log(self, obj):
@@ -79,6 +82,25 @@ class TrackSerializer(serializers.ModelSerializer):
         if last_log:
             return TrackLogSerializer(last_log).data
         return None
+
+    def get_streak_days(self, obj):
+        today = timezone.localdate()
+        logs = obj.logs.order_by("-date").values_list("date", flat=True)
+        streak = 0
+        current_day = today
+
+        for log_date in logs:
+            if log_date == current_day:
+                streak += 1
+                current_day -= timedelta(days=1)
+            elif log_date == current_day - timedelta(days=1):
+                current_day = log_date
+                streak += 1
+                current_day -= timedelta(days=1)
+            else:
+                break
+
+        return streak
 
 
 class TrackLogSerializer(serializers.ModelSerializer):

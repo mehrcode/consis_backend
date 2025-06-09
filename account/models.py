@@ -78,7 +78,7 @@ class Tag(models.Model):
 
 class Track(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tracks")
-    name = models.CharField(max_length=255, default="New Track")
+    name = models.CharField(max_length=255)
     unit = models.CharField(max_length=50, blank=True, default="0") 
     goal = models.PositiveIntegerField(
         default=0
@@ -86,7 +86,7 @@ class Track(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class TrackLog(models.Model):
