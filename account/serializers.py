@@ -38,6 +38,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
         source="interests",
     )
 
+    profile_image = serializers.ImageField(use_url=True)
+    
+
     class Meta:
         model = User
         fields = [
