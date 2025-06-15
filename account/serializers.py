@@ -39,7 +39,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
     )
 
     profile_image = serializers.ImageField(use_url=True)
-    
 
     class Meta:
         model = User
@@ -67,6 +66,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 class TrackSerializer(serializers.ModelSerializer):
     last_log = serializers.SerializerMethodField()
     streak_days = serializers.SerializerMethodField()
+    total_minutes = serializers.SerializerMethodField()
 
     class Meta:
         model = Track
@@ -77,7 +77,8 @@ class TrackSerializer(serializers.ModelSerializer):
             "unit",
             "goal",
             "last_log",
-            "streak_days", 
+            "streak_days",
+            "total_minutes",
         ]
 
     def get_last_log(self, obj):
@@ -105,8 +106,11 @@ class TrackSerializer(serializers.ModelSerializer):
 
         return streak
 
+    def get_total_minutes(self, obj):
+        return obj.logs.aggregate(sum("minutes"))["minutes__sum"] or 0
+
 
 class TrackLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrackLog
-        fields = ["date", "minutes", "score", "progress_note"]
+        fields = ["track", "date", "minutes", "score", "progress_note"]
